@@ -1,0 +1,67 @@
+body {
+  background-image: url("../images/mountain.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.glass {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* From https://css.glass */
+  background: rgba(37, 37, 37, 0.39);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.2px);
+  -webkit-backdrop-filter: blur(6.2px);
+}
+
+.profile {
+  /* From https://css.glass */
+  background: rgba(37, 37, 37, 0.72);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid rgba(37, 37, 37, 0.33);
+}
+
+.profile h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 15px;
+}
+
+.profile section {
+  margin-top: 8px;
+}
+
+.profile form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.profile h2 {
+  position: absolute;
+  top: 15px;
+  color: #dcaf18;
+  border-bottom: 1px solid #fff;
+}
+.card-container .redirectors {
+  position: absolute;
+  bottom: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+    
+.msg {
+  z-index: 99;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+}

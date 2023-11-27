@@ -1,0 +1,31 @@
+.searched-note {
+    border-top: 4px solid #37e2e2;
+    border-radius: 3px;
+  }
+  .searched-note .time {
+    color: #37e2e2;
+  }
+  
+  .searched-note .title {
+    border: none;
+  }
+  .searched-note .remove {
+    background-color: #37e2e2;
+  }
+
+  .searched-note .icon-container {
+    width: 100px;
+  }
+  .searched-note .text {
+    border-bottom: 1px solid #37e2e2;
+  }
+  
+  
+  .return-img {
+    width: 40px;
+  }
+  
+  .return-img:hover {
+    opacity: 0.7;
+  }
+  

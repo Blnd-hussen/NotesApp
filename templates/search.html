@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+<script src="../static/js/index.js"></script>
+<script src="../static/js/small_features.js"></script>
+{% endblock %}
+
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg">
+    <P>{{ msg }}</P>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<a href="/"><img src="../static/images/icons8-go-back-50.png" class="return-img"></a>
+
+<div class="edit-note-area">
+</div>
+
+<div class="search-section">
+    {% if searched_notes %}
+    {% for note in searched_notes %}
+    <div class="note searched-note">
+        <div class="time">
+            {{ note["date_time"] }}
+        </div>
+        <p class="title">{{ note["title"] }}</p>
+        <p class="text" id="text">{{ note["content"] }}</p>
+        <input type="hidden" class="id" value="{{ note['id'] }}">
+        <div class="container search-container">
+            <div>
+                <form action="/delete" , method="post">
+                    <input type="hidden" name="id" value="{{ note['id']}}">
+                    <button type="submit" class="remove">Remove</button>
+                </form>
+            </div>
+            <section class="icon-container">
+                <div class="edit">
+                    <div class="tooltip">
+                        <button class="edit-btn" type="submit"><img src="../static/images/icons8-edit-96.png"
+                                alt="edit">
+                            <span class="tooltiptext">Edit</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="copy">
+                    <div class="tooltip">
+                        <button id="copy"><img src="../static/images/icons8-copy-white.png" alt="copy">
+                            <span class="tooltiptext" id="myTooltip">Copy</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login-register.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+<script type="module" src="../static/js/profile.js"></script>
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg">
+    <P>{{ msg }}</P>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="glass"></div>
+<main class="card-container profile">
+    <h2>{{ username }}</h2>
+    <h1 id="headerMsg">Update Password</h1>
+    <section>
+        <form action="/profile" method="post" id="form">
+            <input type="password" name="currentPassword" placeholder="Current Password" autocomplete="off" autofocus
+                required id="currentPassword">
+            <input type="password" name="newPassword" placeholder="New Password" autocomplete="off" autofocus required
+                id="newPassword">
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" autocomplete="off" autofocus
+                required id="confirmPassword">
+            <button type="submit" id="submitBtn" name="optionBtn" value="updatePassword">Update</button>
+        </form>
+    </section>
+    <div class="redirectors">
+        <a href="/">Cancel</a>
+        <button id="optionSwitcher" class="optionBtn">Delete Account</button>
+    </div>
+</main>
+
+
+{% endblock %}

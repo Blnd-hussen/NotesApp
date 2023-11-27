@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login-register.css') }}">
+<script src="../static/js/login-register.js"></script>
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg">
+    <P>{{ msg }}</P>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<main class="card-container">
+    <h1>SIGNUP</h1>
+    <section>
+        <form action="/register" method="post">
+            <div class="tool-tip">
+                <input type="text" name="username" placeholder="Username" autocomplete="off" autofocus required id="user-name">
+                <p id="username-tip"></p>
+            </div>
+            <div class="tool-tip">
+                <input type="password" name="password" placeholder="Password" autocomplete="off" autofocus required id="password">
+                <p id="password-tip"></p>
+            </div>
+            <div class="tool-tip">
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" autocomplete="off" autofocus
+                required id="confirm-password">
+                <p id="confirm-tip"></p>
+            </div>
+            <button type="submit" id="submitBtn">SignUp</button>
+        </form>
+    </section>
+    <div class="redirectors">
+        <a href="/login">Already have an account? Login here!</a>
+    </div>
+</main>
+{% endblock %}

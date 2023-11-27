@@ -1,0 +1,183 @@
+{% extends "layout.html" %} {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/saved-notes.css') }}" />
+<script src="../static/js/index.js"></script>
+<script src="../static/js/small_features.js"></script>
+{% endblock %} {% block body %}
+
+<main class="overall-container">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for msg in
+    messages %}
+    <div class="msg">
+        <p>{{ msg }}</p>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <header class="header-and-search">
+        <section class="navbar-container">
+            <h2>Notes</h2>
+            <div>
+                <button id="menu-button">
+                    <img src="../static/images/icons8-hamburger-menu-50.png" class="hamburger-icon" />
+                </button>
+                <div class="menu hidden visible">
+                    <a href="/profile" class="archive">Profile</a>
+                    <a href="/archives" class="archive">Archives</a>
+                    <a href="/bin" class="archive">Recycle Bin</a>
+                    <form action="clearNotes">
+                        <button class="menuBtn">Clear Notes</button>
+                    </form>
+                    <form action="/logout">
+                        <button class="menuBtn">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <form action="/search">
+            <input type="text" name="title" placeholder="Search.." autocomplete="off" autofocus class="search" />
+        </form>
+    </header>
+
+    <div class="new-note"></div>
+    <div class="edit-note-area"></div>
+
+    {% if pined_notes %}
+    <div class="pin-note">
+        <h3>Pined Notes</h3>
+        {% for note in pined_notes %}
+        <section class="note pined-note" id="note">
+            <div class="time old-time">{{ note["date_time"] }}</div>
+            <p class="title" id="title">{{ note["title"] }}</p>
+            <p class="text" id="text">{{ note["content"] }}</p>
+            <input type="hidden" class="id" value="{{ note['id'] }}" />
+            <main class="container old-container">
+                <div>
+                    <form action="/delete" , method="post">
+                        <input type="hidden" id="note-id" name="id" value="{{ note['id'] }}" />
+                        <button class="remove" id="delete">Remove</button>
+                    </form>
+                </div>
+                <section class="icon-container">
+                    <div class="pin">
+                        <div class="tooltip">
+                            <form action="/pin" method="post">
+                                <input type="hidden" name="id" value="{{ note['id'] }}" />
+                                <button id="pin" type="submit">
+                                    <img src="../static/images/icons8-pin-30.png" alt="pin" />
+                                    <span class="tooltiptext">Unpin</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="edit">
+                        <div class="tooltip">
+                            <button class="edit-btn" type="submit">
+                                <img src="../static/images/icons8-edit-96.png" alt="edit" />
+                                <span class="tooltiptext">Edit</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="copy">
+                        <div class="tooltip">
+                            <button class="copyBtn">
+                                <img src="../static/images/icons8-copy-white.png" alt="copy" />
+                                <span class="tooltiptext" id="myTooltip">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="archive">
+                        <div class="tooltip">
+                            <form action="/archive" , method="post">
+                                <input type="hidden" name="id" value="{{ note['id'] }}" />
+                                <button>
+                                    <img src="../static/images/icons8-archive-64.png" alt="archive" />
+                                    <span class="tooltiptext">Archive</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </section>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="saved-notes" {% if not notes %} style="display: none" {% endif %}>
+        <h3>Saved Notes</h3>
+        {% for note in notes %}
+        <section class="note saved-note" id="note">
+            <div class="time saved-time">{{ note["date_time"] }}</div>
+            <p class="title" id="title">{{ note["title"] }}</p>
+            <p class="text" id="text">{{ note["content"] }}</p>
+            <input type="hidden" class="id" value="{{ note['id'] }}" />
+            <main class="container saved-container">
+                <div>
+                    <form action="/delete" , method="post">
+                        <input type="hidden" id="note-id" name="id" value="{{ note['id'] }}" />
+                        <button class="remove" id="delete">Remove</button>
+                    </form>
+                </div>
+                <section class="icon-container">
+                    <div class="pin">
+                        <div class="tooltip">
+                            <form action="/pin" method="post">
+                                <input type="hidden" name="id" value="{{ note['id'] }}" />
+                                <button id="pin" type="submit">
+                                    <img src="../static/images/icons8-pin-30.png" alt="pin" />
+                                    <span class="tooltiptext">Pin</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="edit">
+                        <div class="tooltip">
+                            <button class="edit-btn" type="submit">
+                                <img src="../static/images/icons8-edit-96.png" alt="edit" />
+                                <span class="tooltiptext">Edit</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="copy">
+                        <div class="tooltip">
+                            <button class="copyBtn">
+                                <img src="../static/images/icons8-copy-white.png" alt="copy" />
+                                <span class="tooltiptext">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="archive">
+                        <div class="tooltip">
+                            <form action="/archive" , method="post">
+                                <input type="hidden" name="id" value="{{ note['id'] }}" />
+                                <button>
+                                    <img src="../static/images/icons8-archive-64.png" alt="archive" />
+                                    <span class="tooltiptext">Archive</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </section>
+        {% endfor %}
+    </div>
+
+    <div class="no-notes" {% if pined_notes or notes %}style="display:none;" {% endif %}>
+        <p class="p1">No added notes yet!</p>
+        <p class="p2">Click the add button to create a new note.</p>
+        <img src="../static/images/note-taking-removebg-preview.png" alt="note pic" width="350px" />
+    </div>
+
+    <div class="add-note">
+        <button class="add-button">
+            <img src="../static/images/icons8-add-50.png" alt="Add new note" />
+        </button>
+    </div>
+</main>
+{% endblock %}

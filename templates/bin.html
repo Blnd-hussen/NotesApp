@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block head %}
+<link rel="stylesheet" href="../static/css/boilerPlate.css" />
+<link rel="stylesheet" href="../static/css/style.css" />
+<link rel="stylesheet" href="../static/css/bin.css" />
+{% endblock %} {% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg">
+  <p>{{ msg }}</p>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<a href="/"><img src="../static/images/icons8-go-back-50.png" class="return-img" /></a>
+
+
+<main>
+  <section {% if not notes %} style="display: none" {% endif %}>
+    <h3>Deleted Notes</h3>
+    {% for note in notes %}
+    <section class="note removed-notes" id="note">
+      <div class="time saved-time">{{ note["date_time"] }}</div>
+      <p class="title" id="title">{{ note["title"] }}</p>
+      <p class="text" id="text">{{ note["content"] }}</p>
+      <input type="hidden" class="id" value="{{ note['id'] }}" />
+      <section class="container saved-container">
+        <div>
+          <form action="/bin" , method="post">
+            <input type="hidden" id="note-id" name="id" value="{{ note['id'] }}" />
+            <input type="hidden" id="note-name" name="title" value="{{ note['title'] }}" />
+            <button class="remove" id="delete" name="operation" value="delete">Delete</button>
+            <button class="recover" id="delete" name="operation" value="recover">Recover</button>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="buttons">
+      <form action="/delete_recover" , method="post">
+        <button name="operation" value="delete">Delete All</button>
+        <button name="operation" value="recover">Recover All</button>
+      </form>
+    </section>
+    {% endfor %}
+  </section>
+
+  <section class="no-notes" {% if notes %} style="display: none" {% endif %}>
+    <p class="p1">Recycle Bin is empty!</p>
+    <br>
+    <p class="p2">Notes that are deleted will be shown here.</p>
+    <p class="p2">Notes deleted from the recycle bin can not be recovered!</p>
+  </section>
+</main>
+{% endblock %}

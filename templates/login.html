@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login-register.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg">
+    <P>{{ msg }}</P>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<main class="card-container">
+    <h1>LOGIN</h1>
+    <section>
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username" autocomplete="off" autofocus>
+            <input type="password" name="password" placeholder="Password" autocomplete="off" autofocus>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    <div class="redirectors">
+        <a href="/register">Don't have an account? Register here!</a>
+    </div>
+</main>
+{% endblock %}

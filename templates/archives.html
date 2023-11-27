@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<a href="/"><img src="../static/images/icons8-go-back-50.png" class="return-img"></a>
+
+
+<div class="edit-note-area">
+</div>
+
+<div class="old-notes" {% if not notes %} style="display: none;" {% endif %}>
+    <h3>Archived Notes</h3>
+    {% for note in notes %}
+    <section class="note archive-note" id="note">
+        <div class="time">
+            {{ note["date_time"] }}
+        </div>
+        <p class="title" id="title">{{ note["title"] }}</p>
+        <p class="text" id="text">{{ note["content"] }}</p>
+        <input type="hidden" class="id" value="{{ note['id'] }}">
+        <main class="container old-container">
+            <div>
+                <form action="/archive" method="post">
+                    <input type="hidden" name="id" value="{{ note['id'] }}">
+                    <button type="submit" class="save">Unarchive</button>
+                </form>
+            </div>
+        </main>
+    </section>
+    {% endfor %}
+</div>
+
+<div class="no-notes" {% if notes %}style="display:none;" {% endif %}>
+    <p class="p1">Archives are empty!</p>
+    <p class="p2">You can archive a note by clicking on the archive icon.</p>
+    <img src="../static/images/My project.png" alt="note pic" width="350px">
+</div>
+{% endblock %}

@@ -1,0 +1,251 @@
+.header-and-search {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 20px;
+}
+
+.note {
+  position: relative;
+
+  background-color: #4e4d4d93;
+  color: white;
+
+  margin-top: 15px;
+  padding: 10px;
+
+  width: 100%;
+  min-height: 60px;
+  max-height: 450px;
+  border: none;
+}
+
+.note {
+  border-top: 4px solid #e0b21b;
+  border-radius: 3px;
+}
+
+.time {
+  position: absolute;
+  right: 12px;
+}
+
+.note .time {
+  color: #e0b21b;
+}
+
+.title {
+  background-color: transparent;
+  color: #e4dddd;
+
+  margin-top: 20px;
+
+  font-size: 0.89rem;
+  padding: 5px;
+
+  border: none;
+  outline: none;
+}
+
+
+.text {
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+
+  max-height: 280px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 60px;
+
+  padding: 5px;
+  overflow: auto;
+  overflow-wrap: break-word;
+
+  background-color: #4e4d4d93;
+  color: white;
+}
+
+.remove {
+  background-color: #d78237;
+  color: #000000;
+
+  font-size: 15px;
+  font-weight: 300;
+
+  padding: 0.45rem 2rem;
+}
+
+.remove:hover {
+  opacity: .7;
+}
+
+.note .title {
+  border-bottom: 1px solid #e0b21b;
+}
+
+.add-note {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  text-align: center;
+}
+
+.save {
+  background-color: #dcaf18;
+  color: #101010;
+
+  font-size: 15px;
+  font-weight: 300;
+
+  padding: 0.45rem 2rem;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.archive-note .save {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.cancel-button {
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+
+  color: #dcaf18;
+  background-color: transparent;
+  border: 1px solid #dcaf18;
+
+  font-size: 15px;
+  font-weight: 300;
+
+  padding: 0.4rem 1.8rem;
+
+  margin-left: 10px;
+}
+
+/* navbar section */
+
+.navbar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+
+.menu {
+  background-color: #333;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 15px;
+
+  position: absolute;
+  top: 35px;
+  right: -5px;
+  z-index: 999;
+  
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#menu-button {
+  background-color: transparent;
+  border: none;
+}
+
+
+.menu a, button {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+
+  transition: color 25ms ease-in-out;
+}
+
+.archive:hover, .menuBtn:hover {
+  background-color: transparent;
+  color: #dcaf18;
+  opacity: 1;
+}
+
+.hamburger-icon {
+  width: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity .15s ease-in-out;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.icon-container button {
+  background-color: transparent;
+  border: none;
+  margin-right: 5px;
+}
+.icon-container img {
+  width: 25px;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  padding: 5px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 135%;
+  left: 50%;
+  margin-left: -23px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

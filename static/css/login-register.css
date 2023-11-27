@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,500;10..48,700&display=swap");
+
+.card-container {
+  z-index: 1;
+  position: relative;
+  background-color: #333;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 120px auto;
+  padding: 150px 20px;
+  max-width: 600px;
+
+  box-shadow: 0 0 5px #4b4b4b;
+}
+.card-container h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 2rem;
+  position: absolute;
+  top: 40px;
+}
+
+.card-container section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100px;
+  row-gap: 4px;
+}
+
+.card-container form input {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 1rem;
+
+  width: 300px;
+  height: 30px;
+
+  margin-bottom: 25px;
+  padding: 0.5rem;
+
+  border: none;
+  border-bottom: 1px solid #dcaf18;
+  outline: none;
+  transition: border 0.15s;
+}
+
+.card-container input:hover {
+  border-bottom: 2px solid #e28800;
+}
+
+.card-container form button {
+  background-color: #dcaf18;
+  color: black;
+  font-size: larger;
+  padding: 0.5rem 0.2rem;
+  border: none;
+  border-radius: 3px;
+}
+
+.card-container form button:hover {
+  background-color: #e28800;
+  opacity: 1;
+}
+
+.card-container a, .optionBtn {
+  color: rgb(199, 199, 199);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.card-container a:hover, .optionBtn:hover {
+  color: #dcaf18;
+  opacity: 1;
+}
+
+.card-container .redirectors {
+  position: absolute;
+  bottom: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.tool-tip {
+  position: relative;
+}
+.tool-tip p {
+  width: max-content;
+  font-size: 12px;
+  position: absolute;
+  bottom: 4px;
+  left: 10px;
+  color: #d65454;
+}

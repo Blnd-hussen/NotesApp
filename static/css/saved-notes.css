@@ -1,0 +1,22 @@
+.saved-note {
+  border-top: 4px solid #d78237;
+  border-radius: 3px;
+}
+
+.saved-note .time {
+  color: #d78237;
+}
+
+.pined-note {
+  border-top: 4px solid #e15f28;
+}
+
+.pined-note .text {
+  border-top: 1px solid #e15f28;
+}
+.pined-note .time {
+  color: #e15f28;
+}
+.pined-note .remove {
+  background-color: #e15f28;
+}
